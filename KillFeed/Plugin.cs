@@ -154,7 +154,7 @@ namespace KillFeed
 					{
                         barva3 = "red";
 					}
-					xd = string.Format("<size={0}>{1}<color={2}>[{3}HP]</color>￹{4}</size>", new object[]
+					xd = string.Format("<size={0}>{1}<color={2}> [{3}HP] has punched </color>￹<color=red>{4}</color></size>", new object[]
 					{
                         size,
 						unturnedPlayer.CharacterName,
@@ -171,9 +171,11 @@ namespace KillFeed
 						"<size=",
                         size,
 						">",
-						player.CharacterName,
+                        "<color=red>",
+                        player.CharacterName,
+                        "</color>",
                         " has been killed by a sentry",
-                        "￴</size>"
+                        "</size>"
 					});
 				}
 				bool bleed = cause == EDeathCause.BLEEDING;
@@ -184,9 +186,11 @@ namespace KillFeed
 						"<size=",
                         size,
 						">",
-						player.CharacterName,
+                        "<color=red>",
+                        player.CharacterName,
+                        "</color>",
                         " has bled out",
-                        "￶</size>"
+                        "</size>"
 					});
 				}
 				bool infec = cause == EDeathCause.INFECTION;
@@ -197,9 +201,11 @@ namespace KillFeed
 						"<size=",
                         size,
 						">",
-						player.CharacterName,
+                        "<color=red>",
+                        player.CharacterName,
+                        "</color>",
                         " has died to radiation",
-                        "￳</size>"
+                        "</size>"
 					});
 				}
 				bool mis = cause == EDeathCause.MISSILE;
@@ -210,9 +216,11 @@ namespace KillFeed
 						"<size=",
                         size,
 						">",
-						player.CharacterName,
+                        "<color=red>",
+                        player.CharacterName,
+                        "</color>",
                         " has been blown up by a missile",
-                        "￸</size>"
+                        "</size>"
 					});
 				}
 				bool splash = cause == EDeathCause.SPLASH;
@@ -223,9 +231,11 @@ namespace KillFeed
 						"<size=",
                         size,
 						">",
-						player.CharacterName,
+                        "<color=red>",
+                        player.CharacterName,
+                        "</color>",
                         " has died to acid",
-                        "￲</size>"
+                        "</size>"
 					});
 				}
 				bool water = cause == EDeathCause.WATER;
@@ -236,9 +246,11 @@ namespace KillFeed
 						"<size=",
                         size,
 						">",
-						player.CharacterName,
+                        "<color=red>",
+                        player.CharacterName,
+                        "</color>",
                         " has died to dehydratation",
-                        "￲</size>"
+                        "</size>"
 					});
 				}
 				bool food = cause == EDeathCause.FOOD;
@@ -249,7 +261,9 @@ namespace KillFeed
 						"<size=",
                         size,
 						">",
-						player.CharacterName,
+                        "<color=red>",
+                        player.CharacterName,
+                        "</color>",
                         " has died to starvation",
                         "￻</size>"
 					});
@@ -262,9 +276,11 @@ namespace KillFeed
 						"<size=",
                         size,
 						">",
-						player.CharacterName,
+                        "<color=red>",
+                        player.CharacterName,
+                        "</color>",
                         " has died to an animal",
-                        "￹￹￻</size>"
+                        "￹￹￻</size>"
 					});
 				}
 				bool land = cause == EDeathCause.LANDMINE;
@@ -275,8 +291,10 @@ namespace KillFeed
 						"<size=",
                         size,
 						">",
-						player.CharacterName,
+                        "<color=red>",
+                        player.CharacterName,
                         " has died to a landmine",
+                        "</color>",
                         "￺</size>"
 					});
 				}
@@ -288,9 +306,11 @@ namespace KillFeed
 						"<size=",
                         size,
 						">",
-						player.CharacterName,
+                        "<color=red>",
+                        player.CharacterName,
+                        "</color>",
                         " has ran out of oxygen",
-                        " ￼</size>"
+                        "</size>"
 					});
 				}
 				bool veh = cause == EDeathCause.VEHICLE;
@@ -301,9 +321,11 @@ namespace KillFeed
 						"<size=",
                         size,
 						">",
-						player.CharacterName,
+                        "<color=red>",
+                        player.CharacterName,
+                        "</color>",
                         " has been blown up by a vehicle",
-                        "￾</size>"
+                        "</size>"
 					});
 				}
 				bool smrt = cause == EDeathCause.SUICIDE;
@@ -314,9 +336,11 @@ namespace KillFeed
 						"<size=",
                         size,
 						">",
+						"<color=red>",
 						player.CharacterName,
+						"</color>",
                         " has suicided",
-                        "￰</size>"
+                        "</size>"
 					});
 				}
 				this.UpdateKills(xd);

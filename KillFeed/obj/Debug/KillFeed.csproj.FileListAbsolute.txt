@@ -85,7 +85,7 @@ D:\code\killfeedjira\KillFeed\bin\Debug\Pathfinding.Poly2Tri.dll
 D:\code\killfeedjira\KillFeed\obj\Debug\KillFeed.csproj.AssemblyReference.cache
 D:\code\killfeedjira\KillFeed\obj\Debug\KillFeed.csproj.CoreCompileInputs.cache
 D:\code\killfeedjira\KillFeed\obj\Debug\KillFeed.csproj.CopyComplete
-D:\code\killfeedjira\KillFeed\bin\Debug\Betatestkillfeed.dll
-D:\code\killfeedjira\KillFeed\bin\Debug\Betatestkillfeed.pdb
-D:\code\killfeedjira\KillFeed\obj\Debug\Betatestkillfeed.dll
-D:\code\killfeedjira\KillFeed\obj\Debug\Betatestkillfeed.pdb
+D:\code\killfeedjira\KillFeed\bin\Debug\KillFeed.dll
+D:\code\killfeedjira\KillFeed\bin\Debug\KillFeed.pdb
+D:\code\killfeedjira\KillFeed\obj\Debug\KillFeed.dll
+D:\code\killfeedjira\KillFeed\obj\Debug\KillFeed.pdb
