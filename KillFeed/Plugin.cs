@@ -117,10 +117,8 @@ namespace KillFeed
 						"<size=",
 						size,
 						">",
-                        "<color=red>",
-                        player.CharacterName,
-                        "</color>",
-                        " has been killed by a zombie",
+						player.CharacterName,
+						" has been killed by a zombie",
 						" </size>"
 					});
 				}
@@ -132,9 +130,7 @@ namespace KillFeed
 						"<size=",
                         size,
 						">",
-                        "<color=red>",
-                        player.CharacterName,
-                        "</color>",
+						player.CharacterName,
                         " has been killed by a vehicle",
                         " ￿</size>"
 					});
