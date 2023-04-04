@@ -141,14 +141,14 @@ namespace KillFeed
                         }
                         string range2 = Vector3.Distance(player.Position, unturnedPlayer.Position).ToString("00");
                         range2 = Regex.Replace(range2, "^0+(?=\\d+$)", "");
-                        ItemGunAsset itemGunAsset2 = (ItemGunAsset)Assets.find(EAssetType.ITEM, unturnedPlayer.Player.equipment.itemID);
+                        ItemAsset weaponAssetxd = unturnedPlayer.Player.equipment.asset;
                         xd = string.Format("<size={0}><color={8}>{1} </color><color={2}>[{3}HP]</color> <color={10}>{4}</color> <color={9}>[{5}m]</color><color={7}> {6}</color></size>", new object[]
                         {
                             size,
                             unturnedPlayer.CharacterName,
                             barva2,
                             unturnedPlayer.Health,
-                            itemGunAsset2.itemName,
+                            weaponAssetxd.itemName,
                             range2,
                             player.CharacterName,
                                                     Plugin.Instance.Configuration.Instance.victimcolor,
