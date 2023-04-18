@@ -32,33 +32,35 @@ namespace KillFeed
             string xd = "";
             string size = base.Configuration.Instance.Size.ToString();
             UnturnedPlayer unturnedPlayer = UnturnedPlayer.FromCSteamID(murderer);
-            bool killfeedmain = cause == EDeathCause.GUN && limb == ELimb.SKULL;
-            if (killfeedmain)
+            switch (cause)
             {
-                bool hrac = unturnedPlayer != null;
-                if (hrac)
-                {
-                    string barva = "";
-                    bool zelena = unturnedPlayer.Health <= 100;
-                    if (zelena)
+                case EDeathCause.GUN:
+                    if (limb == ELimb.SKULL)
                     {
-                        barva = "green";
-                    }
-                    bool oranzova = unturnedPlayer.Health <= 50;
-                    if (oranzova)
-                    {
-                        barva = "orange";
-                    }
-                    bool cervena = unturnedPlayer.Health <= 30;
-                    if (cervena)
-                    {
-                        barva = "red";
-                    }
-                    string range = Vector3.Distance(player.Position, unturnedPlayer.Position).ToString("00");
-                    range = Regex.Replace(range, "^0+(?=\\d+$)", "");
-                    ItemGunAsset itemGunAsset = (ItemGunAsset)Assets.find(EAssetType.ITEM, unturnedPlayer.Player.equipment.itemID);
-                    xd = string.Format("<size={0}><color={8}>{1} </color><color={2}>[{3}HP]</color> <color={10}>{4}</color> H <color={9}>[{5}m]</color><color={7}> {6}</color></size>", new object[]
-                    {
+                        bool hrac = unturnedPlayer != null;
+                        if (hrac)
+                        {
+                            string barva = "";
+                            bool zelena = unturnedPlayer.Health <= 100;
+                            if (zelena)
+                            {
+                                barva = "green";
+                            }
+                            bool oranzova = unturnedPlayer.Health <= 50;
+                            if (oranzova)
+                            {
+                                barva = "orange";
+                            }
+                            bool cervena = unturnedPlayer.Health <= 30;
+                            if (cervena)
+                            {
+                                barva = "red";
+                            }
+                            string range = Vector3.Distance(player.Position, unturnedPlayer.Position).ToString("00");
+                            range = Regex.Replace(range, "^0+(?=\\d+$)", "");
+                            ItemGunAsset itemGunAsset = (ItemGunAsset)Assets.find(EAssetType.ITEM, unturnedPlayer.Player.equipment.itemID);
+                            xd = string.Format(Plugin.Instance.Configuration.Instance.headshotgunformat, new object[]
+                            {
                         size,
                         unturnedPlayer.CharacterName,
                         barva,
@@ -70,39 +72,36 @@ namespace KillFeed
                         Plugin.Instance.Configuration.Instance.killercolor,
                         Plugin.Instance.Configuration.Instance.rangecolor,
                         Plugin.Instance.Configuration.Instance.guncolor
-                    });
-                    this.UpdateKills(xd);
-                }
-            }
-            else
-            {
-                bool zbrancause = cause == EDeathCause.GUN;
-                if (zbrancause)
-                {
-                    bool muzu = unturnedPlayer != null;
-                    if (muzu)
+                            });
+                            this.UpdateKills(xd);
+                        }
+                    }
+                    else
                     {
-                        string barva2 = "";
-                        bool ex = unturnedPlayer.Health <= 100;
-                        if (ex)
+                        bool muzu = unturnedPlayer != null;
+                        if (muzu)
                         {
-                            barva2 = "green";
-                        }
-                        bool ex2 = unturnedPlayer.Health <= 50;
-                        if (ex2)
-                        {
-                            barva2 = "orange";
-                        }
-                        bool ex3 = unturnedPlayer.Health <= 30;
-                        if (ex3)
-                        {
-                            barva2 = "red";
-                        }
-                        string range2 = Vector3.Distance(player.Position, unturnedPlayer.Position).ToString("00");
-                        range2 = Regex.Replace(range2, "^0+(?=\\d+$)", "");
-                        ItemGunAsset itemGunAsset2 = (ItemGunAsset)Assets.find(EAssetType.ITEM, unturnedPlayer.Player.equipment.itemID);
-                        xd = string.Format("<size={0}><color={8}>{1} </color><color={2}>[{3}HP]</color> <color={10}>{4}</color> <color={9}>[{5}m]</color><color={7}> {6}</color></size>", new object[]
-                        {
+                            string barva2 = "";
+                            bool ex = unturnedPlayer.Health <= 100;
+                            if (ex)
+                            {
+                                barva2 = "green";
+                            }
+                            bool ex2 = unturnedPlayer.Health <= 50;
+                            if (ex2)
+                            {
+                                barva2 = "orange";
+                            }
+                            bool ex3 = unturnedPlayer.Health <= 30;
+                            if (ex3)
+                            {
+                                barva2 = "red";
+                            }
+                            string range2 = Vector3.Distance(player.Position, unturnedPlayer.Position).ToString("00");
+                            range2 = Regex.Replace(range2, "^0+(?=\\d+$)", "");
+                            ItemGunAsset itemGunAsset2 = (ItemGunAsset)Assets.find(EAssetType.ITEM, unturnedPlayer.Player.equipment.itemID);
+                            xd = string.Format(Plugin.Instance.Configuration.Instance.gunformat, new object[]
+                            {
                             size,
                             unturnedPlayer.CharacterName,
                             barva2,
@@ -114,14 +113,13 @@ namespace KillFeed
                         Plugin.Instance.Configuration.Instance.killercolor,
                         Plugin.Instance.Configuration.Instance.rangecolor,
                         Plugin.Instance.Configuration.Instance.guncolor
-                        });
+                            });
+                        }
                     }
-                }
-                bool meleexd = cause == EDeathCause.MELEE;
-                if (meleexd)
-                {
-                    bool muzu = unturnedPlayer != null;
-                    if (muzu)
+                    break;
+                case EDeathCause.MELEE:
+                    bool muzuxd = unturnedPlayer != null;
+                    if (muzuxd)
                     {
                         string barva2 = "";
                         bool ex = unturnedPlayer.Health <= 100;
@@ -142,7 +140,7 @@ namespace KillFeed
                         string range2 = Vector3.Distance(player.Position, unturnedPlayer.Position).ToString("00");
                         range2 = Regex.Replace(range2, "^0+(?=\\d+$)", "");
                         ItemAsset weaponAssetxd = unturnedPlayer.Player.equipment.asset;
-                        xd = string.Format("<size={0}><color={8}>{1} </color><color={2}>[{3}HP]</color> <color={10}>{4}</color> <color={9}>[{5}m]</color><color={7}> {6}</color></size>", new object[]
+                        xd = string.Format(Plugin.Instance.Configuration.Instance.meleeformat, new object[]
                         {
                             size,
                             unturnedPlayer.CharacterName,
@@ -157,13 +155,10 @@ namespace KillFeed
                         Plugin.Instance.Configuration.Instance.guncolor
                         });
                     }
-                }
-
-                bool zombik = cause == EDeathCause.ZOMBIE;
-                if (zombik)
-                {
+                    break;
+                case EDeathCause.ZOMBIE:
                     xd = string.Concat(new string[]
-                    {
+                   {
                         "<size=",
                         size,
                         ">",
@@ -174,13 +169,11 @@ namespace KillFeed
                         "</color>",
                         " has been killed by a zombie",
                         " </size>"
-                    });
-                }
-                bool auto = cause == EDeathCause.ROADKILL;
-                if (auto)
-                {
+                   });
+                    break;
+                case EDeathCause.ROADKILL:
                     xd = string.Concat(new string[]
-                    {
+                   {
                         "<size=",
                         size,
                         ">",
@@ -191,11 +184,9 @@ namespace KillFeed
                         "</color>",
                         " has been killed by a vehicle",
                         " ￿</size>"
-                    });
-                }
-                bool punch = cause == EDeathCause.PUNCH;
-                if (punch)
-                {
+                   });
+                    break;
+                case EDeathCause.PUNCH:
                     string barva3 = "";
                     bool barve4 = unturnedPlayer.Health <= 100;
                     if (barve4)
@@ -212,7 +203,7 @@ namespace KillFeed
                     {
                         barva3 = "red";
                     }
-                    xd = string.Format("<size={0}>{1}<color={2}> [{3}HP] has punched </color>￹<color=red>{4}</color></size>", new object[]
+                    xd = string.Format(Plugin.Instance.Configuration.Instance.punchformat, new object[]
                     {
                         size,
                         unturnedPlayer.CharacterName,
@@ -220,12 +211,10 @@ namespace KillFeed
                         unturnedPlayer.Health,
                         player.CharacterName
                     });
-                }
-                bool sentry = cause == EDeathCause.SENTRY;
-                if (sentry)
-                {
+                    break;
+                case EDeathCause.SENTRY:
                     xd = string.Concat(new string[]
-                    {
+                   {
                         "<size=",
                         size,
                         ">",
@@ -236,13 +225,12 @@ namespace KillFeed
                         "</color>",
                         " has been killed by a sentry",
                         "</size>"
-                    });
-                }
-                bool bleed = cause == EDeathCause.BLEEDING;
-                if (bleed)
-                {
+                   });
+                    break;
+
+                case EDeathCause.BLEEDING:
                     xd = string.Concat(new string[]
-                    {
+                   {
                         "<size=",
                         size,
                         ">",
@@ -253,13 +241,12 @@ namespace KillFeed
                         "</color>",
                         " has bled out",
                         "</size>"
-                    });
-                }
-                bool infec = cause == EDeathCause.INFECTION;
-                if (infec)
-                {
+                   });
+                    break;
+
+                case EDeathCause.INFECTION:
                     xd = string.Concat(new string[]
-                    {
+                   {
                         "<size=",
                         size,
                         ">",
@@ -270,28 +257,10 @@ namespace KillFeed
                         "</color>",
                         " has died to radiation",
                         "</size>"
-                    });
-                }
-                bool mis = cause == EDeathCause.MISSILE;
-                if (mis)
-                {
-                    xd = string.Concat(new string[]
-                    {
-                        "<size=",
-                        size,
-                        ">",
-                                                "<color=",
-                        Plugin.Instance.Configuration.Instance.playercolor,
-                        ">",
-                        player.CharacterName,
-                        "</color>",
-                        " has been blown up by a missile",
-                        "</size>"
-                    });
-                }
-                bool splash = cause == EDeathCause.SPLASH;
-                if (splash)
-                {
+                   });
+                    break;
+
+                case EDeathCause.SPLASH:
                     xd = string.Concat(new string[]
                     {
                         "<size=",
@@ -305,12 +274,27 @@ namespace KillFeed
                         " has died to acid",
                         "</size>"
                     });
-                }
-                bool water = cause == EDeathCause.WATER;
-                if (water)
-                {
+                    break;
+
+                case EDeathCause.MISSILE:
                     xd = string.Concat(new string[]
-                    {
+{
+                        "<size=",
+                        size,
+                        ">",
+                                                "<color=",
+                        Plugin.Instance.Configuration.Instance.playercolor,
+                        ">",
+                        player.CharacterName,
+                        "</color>",
+                        " has been blown up by a missile",
+                        "</size>"
+});
+                    break;
+
+                case EDeathCause.WATER:
+                    xd = string.Concat(new string[]
+{
                         "<size=",
                         size,
                         ">",
@@ -321,13 +305,12 @@ namespace KillFeed
                         "</color>",
                         " has died to dehydratation",
                         "</size>"
-                    });
-                }
-                bool food = cause == EDeathCause.FOOD;
-                if (food)
-                {
+});
+                    break;
+
+                case EDeathCause.FOOD:
                     xd = string.Concat(new string[]
-                    {
+{
                         "<size=",
                         size,
                         ">",
@@ -338,30 +321,12 @@ namespace KillFeed
                         "</color>",
                         " has died to starvation",
                         "￻</size>"
-                    });
-                }
-                bool animal = cause == EDeathCause.ANIMAL;
-                if (animal)
-                {
+});
+                    break;
+
+                case EDeathCause.LANDMINE:
                     xd = string.Concat(new string[]
-                    {
-                        "<size=",
-                        size,
-                        ">",
-                                                "<color=",
-                        Plugin.Instance.Configuration.Instance.playercolor,
-                        ">",
-                        player.CharacterName,
-                        "</color>",
-                        " has died to an animal",
-                        "￹￹￻</size>"
-                    });
-                }
-                bool land = cause == EDeathCause.LANDMINE;
-                if (land)
-                {
-                    xd = string.Concat(new string[]
-                    {
+{
                         "<size=",
                         size,
                         ">",
@@ -372,13 +337,27 @@ namespace KillFeed
                         " has died to a landmine",
                         "</color>",
                         "￺</size>"
-                    });
-                }
-                bool breath = cause == EDeathCause.BREATH;
-                if (breath)
-                {
+});
+                    break;
+                case EDeathCause.ANIMAL:
                     xd = string.Concat(new string[]
-                    {
+{
+                        "<size=",
+                        size,
+                        ">",
+                                                "<color=",
+                        Plugin.Instance.Configuration.Instance.playercolor,
+                        ">",
+                        player.CharacterName,
+                        "</color>",
+                        " has died to an animal",
+                        "￹￹￻</size>"
+});
+                    break;
+
+                case EDeathCause.BREATH:
+                    xd = string.Concat(new string[]
+{
                         "<size=",
                         size,
                         ">",
@@ -389,13 +368,12 @@ namespace KillFeed
                         "</color>",
                         " has ran out of oxygen",
                         "</size>"
-                    });
-                }
-                bool veh = cause == EDeathCause.VEHICLE;
-                if (veh)
-                {
+});
+                    break;
+
+                case EDeathCause.VEHICLE:
                     xd = string.Concat(new string[]
-                    {
+{
                         "<size=",
                         size,
                         ">",
@@ -406,13 +384,12 @@ namespace KillFeed
                         "</color>",
                         " has been blown up by a vehicle",
                         "</size>"
-                    });
-                }
-                bool smrt = cause == EDeathCause.SUICIDE;
-                if (smrt)
-                {
+});
+                    break;
+
+                case EDeathCause.SUICIDE:
                     xd = string.Concat(new string[]
-                    {
+{
                         "<size=",
                         size,
                         ">",
@@ -423,10 +400,17 @@ namespace KillFeed
                         "</color>",
                         " has suicided",
                         "</size>"
-                    });
-                }
-                this.UpdateKills(xd);
+});
+                    break;
+
+                default:
+                    Rocket.Core.Logging.Logger.Log("-------------------------------------------");
+                    Rocket.Core.Logging.Logger.Log("------------- Simple Killfeed -------------");
+                    Rocket.Core.Logging.Logger.Log("-- Error in killfeed, contact Jira (dev) --");
+                    Rocket.Core.Logging.Logger.Log("-------------------------------------------");
+                    break;
             }
+            this.UpdateKills(xd);
         }
 
         public void FixedUpdate()
