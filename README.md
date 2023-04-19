@@ -9,6 +9,7 @@ Features :
 - Simple to setup
 - Adjustable size
 - Cool looking!
+- (New) Customizable killfeed format
 - No lag!
 - FREE
 
