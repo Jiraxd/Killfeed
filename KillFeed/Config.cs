@@ -7,7 +7,7 @@ namespace KillFeed
     {
         public void LoadDefaults()
         {
-            this.Size = 25;
+            this.Size = 19;
             this.killercolor = "#ffffff";
             this.victimcolor = "#ff0000";
             this.rangecolor = "#ffff00";
@@ -16,7 +16,7 @@ namespace KillFeed
             this.headshotgunformat = "<size={0}><color={8}>{1} </color><color={2}>[{3}HP]</color> <color={10}>{4}</color> H <color={9}>[{5}m]</color><color={7}> {6}</color></size>";
             this.gunformat = "<size={0}><color={8}>{1} </color><color={2}>[{3}HP]</color> <color={10}>{4}</color> <color={9}>[{5}m]</color><color={7}> {6}</color></size>";
             this.meleeformat = "<size={0}><color={8}>{1} </color><color={2}>[{3}HP]</color> <color={10}>{4}</color> <color={9}>[{5}m]</color><color={7}> {6}</color></size>";
-            this.punchformat = "<size={0}>{1}<color={2}> [{3}HP] has punched </color>￹<color=red>{4}</color></size>";
+            this.punchformat = "<size={0}>{1}<color={2}> [{3}HP] has punched</color> ￹<color=red>{4}</color></size>";
         }
         public string punchformat;
         public string meleeformat;
