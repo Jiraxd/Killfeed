@@ -9,6 +9,7 @@ Features :
 - Simple to setup
 - Adjustable size
 - Cool looking!
+- No lag!
 - FREE
 
 Preview:
