@@ -75,6 +75,7 @@ namespace KillFeed
                             });
                             this.UpdateKills(xd);
                         }
+                        break;
                     }
                     else
                     {
@@ -115,8 +116,8 @@ namespace KillFeed
                         Plugin.Instance.Configuration.Instance.guncolor
                             });
                         }
+                        break;
                     }
-                    break;
                 case EDeathCause.MELEE:
                     bool muzuxd = unturnedPlayer != null;
                     if (muzuxd)
