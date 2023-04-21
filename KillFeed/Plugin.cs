@@ -73,7 +73,6 @@ namespace KillFeed
                         Plugin.Instance.Configuration.Instance.rangecolor,
                         Plugin.Instance.Configuration.Instance.guncolor
                             });
-                            this.UpdateKills(xd);
                         }
                         break;
                     }
