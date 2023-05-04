@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Rocket.Core.Plugins;
@@ -37,22 +38,18 @@ namespace KillFeed
                 case EDeathCause.GUN:
                     if (limb == ELimb.SKULL)
                     {
-                        bool hrac = unturnedPlayer != null;
-                        if (hrac)
+                        if (unturnedPlayer != null)
                         {
                             string barva = "";
-                            bool zelena = unturnedPlayer.Health <= 100;
-                            if (zelena)
+                            if (unturnedPlayer.Health <= 100)
                             {
                                 barva = "green";
                             }
-                            bool oranzova = unturnedPlayer.Health <= 50;
-                            if (oranzova)
+                            if (unturnedPlayer.Health <= 50)
                             {
                                 barva = "orange";
                             }
-                            bool cervena = unturnedPlayer.Health <= 30;
-                            if (cervena)
+                            if (unturnedPlayer.Health <= 30)
                             {
                                 barva = "red";
                             }
@@ -82,18 +79,15 @@ namespace KillFeed
                         if (muzu)
                         {
                             string barva2 = "";
-                            bool ex = unturnedPlayer.Health <= 100;
-                            if (ex)
+                            if (unturnedPlayer.Health <= 100)
                             {
                                 barva2 = "green";
                             }
-                            bool ex2 = unturnedPlayer.Health <= 50;
-                            if (ex2)
+                            if (unturnedPlayer.Health <= 50)
                             {
                                 barva2 = "orange";
                             }
-                            bool ex3 = unturnedPlayer.Health <= 30;
-                            if (ex3)
+                            if (unturnedPlayer.Health <= 30)
                             {
                                 barva2 = "red";
                             }
@@ -118,22 +112,18 @@ namespace KillFeed
                         break;
                     }
                 case EDeathCause.MELEE:
-                    bool muzuxd = unturnedPlayer != null;
-                    if (muzuxd)
+                    if (unturnedPlayer != null)
                     {
                         string barva2 = "";
-                        bool ex = unturnedPlayer.Health <= 100;
-                        if (ex)
+                        if (unturnedPlayer.Health <= 100)
                         {
                             barva2 = "green";
                         }
-                        bool ex2 = unturnedPlayer.Health <= 50;
-                        if (ex2)
+                        if (unturnedPlayer.Health <= 50)
                         {
                             barva2 = "orange";
                         }
-                        bool ex3 = unturnedPlayer.Health <= 30;
-                        if (ex3)
+                        if (unturnedPlayer.Health <= 30)
                         {
                             barva2 = "red";
                         }
@@ -413,25 +403,19 @@ namespace KillFeed
             this.UpdateKills(xd);
         }
 
-        public void FixedUpdate()
+        IEnumerator RemoveKills()
         {
-            bool cas = (DateTime.Now - this.Time).TotalSeconds >= 5.0;
-            if (cas)
+            yield return new WaitForSeconds(Configuration.Instance.TimeToRemoveKill);
+            if (this.Kills.Count >= 1)
             {
-                bool killyx = this.Kills.Count >= 1;
-                if (killyx)
-                {
-                    this.Kills.Remove(this.Kills[0]);
-                    EffectManager.sendUIEffect(21394, 445, true, string.Join("\n", this.Kills));
-                }
-                this.Time = DateTime.Now;
+                this.Kills.Remove(this.Kills[0]);
+                EffectManager.sendUIEffect(Configuration.Instance.EffectID, 445, true, string.Join("\n", this.Kills));
             }
         }
 
         public void UpdateKills(string text)
         {
-            bool maxkill = this.Kills.Count >= 5;
-            if (maxkill)
+            if (this.Kills.Count >= 5)
             {
                 this.Kills.RemoveAt(0);
                 this.Kills.Add(text);
@@ -440,14 +424,12 @@ namespace KillFeed
             {
                 this.Kills.Add(text);
             }
-            this.Time = DateTime.Now;
-            EffectManager.sendUIEffect(21394, 445, true, string.Join("\n", this.Kills));
+            StartCoroutine(RemoveKills());
+            EffectManager.sendUIEffect(Configuration.Instance.EffectID, 445, true, string.Join("\n", this.Kills));
         }
 
         public static Plugin Instance;
 
         public List<string> Kills = new List<string>();
-
-        public DateTime Time = DateTime.Now;
     }
 }

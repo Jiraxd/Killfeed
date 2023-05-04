@@ -8,6 +8,8 @@ namespace KillFeed
         public void LoadDefaults()
         {
             this.Size = 19;
+            this.EffectID = 21394;
+            this.TimeToRemoveKill = 5f;
             this.killercolor = "#ffffff";
             this.victimcolor = "#ff0000";
             this.rangecolor = "#ffff00";
@@ -28,5 +30,7 @@ namespace KillFeed
         public string rangecolor;
         public string guncolor;
         public string playercolor;
+        public float TimeToRemoveKill;
+        public ushort EffectID;
     }
 }
