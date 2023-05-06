@@ -19,18 +19,47 @@ namespace KillFeed
             this.gunformat = "<size={0}><color={8}>{1} </color><color={2}>[{3}HP]</color> <color={10}>{4}</color> <color={9}>[{5}m]</color><color={7}> {6}</color></size>";
             this.meleeformat = "<size={0}><color={8}>{1} </color><color={2}>[{3}HP]</color> <color={10}>{4}</color> <color={9}>[{5}m]</color><color={7}> {6}</color></size>";
             this.punchformat = "<size={0}>{1}<color={2}> [{3}HP] has punched</color> <color=red>{4}</color></size>";
+            this.zombieformat = "has been killed by a zombie";
+            this.vehicleformat = "has been killed by a vehicle";
+            this.sentryformat = "has been killed by a sentry";
+            this.bleedingformat = "has bled out";
+            this.radiationformat = "has died to radiation";
+            this.acidformat = "has died to acid";
+            this.missileformat = "has been blown up by a missile";
+            this.waterformat = "has died to dehydratation";
+            this.foodformat = "has died to starvation";
+            this.landmineformat = "has died to a landmine";
+            this.animalformat = "has died to an animal";
+            this.oxygenformat = "has ran out of oxygen";
+            this.vehicleexploformat = "has been blown up by a vehicle";
+            this.suicideformat = "has suicided";
+
         }
-        public string punchformat;
-        public string meleeformat;
-        public string gunformat;
-        public string headshotgunformat;
         public ushort Size;
-        public string killercolor;
-        public string victimcolor;
-        public string rangecolor;
-        public string guncolor;
-        public string playercolor;
         public float TimeToRemoveKill;
         public ushort EffectID;
+        public string playercolor;
+        public string rangecolor;
+        public string guncolor;
+        public string victimcolor;
+        public string killercolor;
+        public string foodformat;
+        public string suicideformat;
+        public string zombieformat;
+        public string radiationformat;
+        public string oxygenformat;
+        public string animalformat;
+        public string sentryformat;
+        public string bleedingformat;
+        public string vehicleexploformat;
+        public string punchformat;
+        public string meleeformat;
+        public string acidformat;
+        public string waterformat;
+        public string missileformat;
+        public string gunformat;
+        public string headshotgunformat;
+        public string landmineformat;
+        public string vehicleformat;
     }
 }

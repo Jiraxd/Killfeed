@@ -156,8 +156,8 @@ namespace KillFeed
                         Plugin.Instance.Configuration.Instance.playercolor,
                         ">",
                         player.CharacterName,
-                        "</color>",
-                        " has been killed by a zombie",
+                        "</color> ",
+                        Plugin.Instance.Configuration.Instance.zombieformat,
                         " </size>"
                    });
                     break;
@@ -171,9 +171,9 @@ namespace KillFeed
                         Plugin.Instance.Configuration.Instance.playercolor,
                         ">",
                         player.CharacterName,
-                        "</color>",
-                        " has been killed by a vehicle",
-                        " ￿</size>"
+                        "</color> ",
+                        Plugin.Instance.Configuration.Instance.vehicleformat,
+                        " </size>"
                    });
                     break;
                 case EDeathCause.PUNCH:
@@ -212,8 +212,8 @@ namespace KillFeed
                         Plugin.Instance.Configuration.Instance.playercolor,
                         ">",
                         player.CharacterName,
-                        "</color>",
-                        " has been killed by a sentry",
+                        "</color> ",
+                        Plugin.Instance.Configuration.Instance.sentryformat,
                         "</size>"
                    });
                     break;
@@ -228,8 +228,8 @@ namespace KillFeed
                         Plugin.Instance.Configuration.Instance.playercolor,
                         ">",
                         player.CharacterName,
-                        "</color>",
-                        " has bled out",
+                        "</color> ",
+                        Plugin.Instance.Configuration.Instance.bleedingformat,
                         "</size>"
                    });
                     break;
@@ -244,8 +244,8 @@ namespace KillFeed
                         Plugin.Instance.Configuration.Instance.playercolor,
                         ">",
                         player.CharacterName,
-                        "</color>",
-                        " has died to radiation",
+                        "</color> ",
+                        Plugin.Instance.Configuration.Instance.radiationformat,
                         "</size>"
                    });
                     break;
@@ -260,8 +260,8 @@ namespace KillFeed
                         Plugin.Instance.Configuration.Instance.playercolor,
                         ">",
                         player.CharacterName,
-                        "</color>",
-                        " has died to acid",
+                        "</color> ",
+                        Plugin.Instance.Configuration.Instance.acidformat,
                         "</size>"
                     });
                     break;
@@ -276,8 +276,8 @@ namespace KillFeed
                         Plugin.Instance.Configuration.Instance.playercolor,
                         ">",
                         player.CharacterName,
-                        "</color>",
-                        " has been blown up by a missile",
+                        "</color> ",
+                        Plugin.Instance.Configuration.Instance.missileformat,
                         "</size>"
 });
                     break;
@@ -292,8 +292,8 @@ namespace KillFeed
                         Plugin.Instance.Configuration.Instance.playercolor,
                         ">",
                         player.CharacterName,
-                        "</color>",
-                        " has died to dehydratation",
+                        "</color> ",
+                        Plugin.Instance.Configuration.Instance.waterformat,
                         "</size>"
 });
                     break;
@@ -308,8 +308,8 @@ namespace KillFeed
                         Plugin.Instance.Configuration.Instance.playercolor,
                         ">",
                         player.CharacterName,
-                        "</color>",
-                        " has died to starvation",
+                        "</color> ",
+                        Plugin.Instance.Configuration.Instance.foodformat,
                         "￻</size>"
 });
                     break;
@@ -324,8 +324,8 @@ namespace KillFeed
                         Plugin.Instance.Configuration.Instance.playercolor,
                         ">",
                         player.CharacterName,
-                        " has died to a landmine",
-                        "</color>",
+                        "</color> ",
+                        Plugin.Instance.Configuration.Instance.landmineformat,
                         "￺</size>"
 });
                     break;
@@ -339,8 +339,8 @@ namespace KillFeed
                         Plugin.Instance.Configuration.Instance.playercolor,
                         ">",
                         player.CharacterName,
-                        "</color>",
-                        " has died to an animal",
+                        "</color> ",
+                        Plugin.Instance.Configuration.Instance.animalformat,
                         "￹￹￻</size>"
 });
                     break;
@@ -355,12 +355,12 @@ namespace KillFeed
                         Plugin.Instance.Configuration.Instance.playercolor,
                         ">",
                         player.CharacterName,
-                        "</color>",
-                        " has ran out of oxygen",
+                        "</color> ",
+                        Plugin.Instance.Configuration.Instance.oxygenformat,
                         "</size>"
 });
                     break;
-
+                   
                 case EDeathCause.VEHICLE:
                     xd = string.Concat(new string[]
 {
@@ -371,8 +371,8 @@ namespace KillFeed
                         Plugin.Instance.Configuration.Instance.playercolor,
                         ">",
                         player.CharacterName,
-                        "</color>",
-                        " has been blown up by a vehicle",
+                        "</color> ",
+                        Plugin.Instance.Configuration.Instance.vehicleexploformat,
                         "</size>"
 });
                     break;
@@ -387,17 +387,17 @@ namespace KillFeed
                         Plugin.Instance.Configuration.Instance.playercolor,
                         ">",
                         player.CharacterName,
-                        "</color>",
-                        " has suicided",
+                        "</color> ",
+                        Plugin.Instance.Configuration.Instance.suicideformat,
                         "</size>"
 });
                     break;
 
                 default:
-                    Rocket.Core.Logging.Logger.Log("-------------------------------------------");
-                    Rocket.Core.Logging.Logger.Log("------------- Simple Killfeed -------------");
-                    Rocket.Core.Logging.Logger.Log("-- Error in killfeed, contact Jira (dev) --");
-                    Rocket.Core.Logging.Logger.Log("-------------------------------------------");
+                    Rocket.Core.Logging.Logger.Log("----------------------------------------------------");
+                    Rocket.Core.Logging.Logger.Log("------------- Simple Killfeed ----------------------");
+                    Rocket.Core.Logging.Logger.Log("-- Unhandled kill in killfeed, contact Jira (dev) --");
+                    Rocket.Core.Logging.Logger.Log("----------------------------------------------------");
                     break;
             }
             this.UpdateKills(xd);
