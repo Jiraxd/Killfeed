@@ -43,15 +43,15 @@ namespace KillFeed
                             string barva = "";
                             if (unturnedPlayer.Health <= 100)
                             {
-                                barva = "green";
+                                barva = Plugin.Instance.Configuration.Instance.HPcolorMax;
                             }
-                            if (unturnedPlayer.Health <= 50)
+                            if (unturnedPlayer.Health <= Plugin.Instance.Configuration.Instance.HPMidValue)
                             {
-                                barva = "orange";
+                                barva = Plugin.Instance.Configuration.Instance.HPcolorMid;
                             }
-                            if (unturnedPlayer.Health <= 30)
+                            if (unturnedPlayer.Health <= Plugin.Instance.Configuration.Instance.HPMinValue)
                             {
-                                barva = "red";
+                                barva = Plugin.Instance.Configuration.Instance.HPcolorMin;
                             }
                             string range = Vector3.Distance(player.Position, unturnedPlayer.Position).ToString("00");
                             range = Regex.Replace(range, "^0+(?=\\d+$)", "");
@@ -81,15 +81,15 @@ namespace KillFeed
                             string barva2 = "";
                             if (unturnedPlayer.Health <= 100)
                             {
-                                barva2 = "green";
+                                barva2 = Plugin.Instance.Configuration.Instance.HPcolorMax;
                             }
-                            if (unturnedPlayer.Health <= 50)
+                            if (unturnedPlayer.Health <= Plugin.Instance.Configuration.Instance.HPMidValue)
                             {
-                                barva2 = "orange";
+                                barva2 = Plugin.Instance.Configuration.Instance.HPcolorMid;
                             }
-                            if (unturnedPlayer.Health <= 30)
+                            if (unturnedPlayer.Health <= Plugin.Instance.Configuration.Instance.HPMinValue)
                             {
-                                barva2 = "red";
+                                barva2 = Plugin.Instance.Configuration.Instance.HPcolorMin;
                             }
                             string range2 = Vector3.Distance(player.Position, unturnedPlayer.Position).ToString("00");
                             range2 = Regex.Replace(range2, "^0+(?=\\d+$)", "");
@@ -117,15 +117,15 @@ namespace KillFeed
                         string barva2 = "";
                         if (unturnedPlayer.Health <= 100)
                         {
-                            barva2 = "green";
+                            barva2 = Plugin.Instance.Configuration.Instance.HPcolorMax;
                         }
-                        if (unturnedPlayer.Health <= 50)
+                        if (unturnedPlayer.Health <= Plugin.Instance.Configuration.Instance.HPMidValue)
                         {
-                            barva2 = "orange";
+                            barva2 = Plugin.Instance.Configuration.Instance.HPcolorMid;
                         }
-                        if (unturnedPlayer.Health <= 30)
+                        if (unturnedPlayer.Health <= Plugin.Instance.Configuration.Instance.HPMinValue)
                         {
-                            barva2 = "red";
+                            barva2 = Plugin.Instance.Configuration.Instance.HPcolorMin;
                         }
                         string range2 = Vector3.Distance(player.Position, unturnedPlayer.Position).ToString("00");
                         range2 = Regex.Replace(range2, "^0+(?=\\d+$)", "");
@@ -178,20 +178,17 @@ namespace KillFeed
                     break;
                 case EDeathCause.PUNCH:
                     string barva3 = "";
-                    bool barve4 = unturnedPlayer.Health <= 100;
-                    if (barve4)
+                    if (unturnedPlayer.Health <= 100)
                     {
-                        barva3 = "green";
+                        barva3 = Plugin.Instance.Configuration.Instance.HPcolorMax;
                     }
-                    bool barve5 = unturnedPlayer.Health <= 50;
-                    if (barve5)
+                    if (unturnedPlayer.Health <= Plugin.Instance.Configuration.Instance.HPMidValue)
                     {
-                        barva3 = "orange";
+                        barva3 = Plugin.Instance.Configuration.Instance.HPcolorMid;
                     }
-                    bool barve6 = unturnedPlayer.Health <= 30;
-                    if (barve6)
+                    if (unturnedPlayer.Health <= Plugin.Instance.Configuration.Instance.HPMinValue)
                     {
-                        barva3 = "red";
+                        barva3 = Plugin.Instance.Configuration.Instance.HPcolorMin;
                     }
                     xd = string.Format(Plugin.Instance.Configuration.Instance.punchformat, new object[]
                     {

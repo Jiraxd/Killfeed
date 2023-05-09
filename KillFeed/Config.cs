@@ -12,6 +12,11 @@ namespace KillFeed
             this.TimeToRemoveKill = 5f;
             this.killercolor = "#ffffff";
             this.victimcolor = "#ff0000";
+            this.HPcolorMax = "#037d50";
+            this.HPcolorMid = "#ffa500";
+            this.HPcolorMin = "#ff0000";
+            this.HPMidValue = 50;
+            this.HPMinValue = 30;
             this.rangecolor = "#ffff00";
             this.guncolor = "#bfff00";
             this.playercolor = "#ff0000";
@@ -38,6 +43,11 @@ namespace KillFeed
         public ushort Size;
         public float TimeToRemoveKill;
         public ushort EffectID;
+        public string HPcolorMax;
+        public string HPcolorMid;
+        public string HPcolorMin;
+        public int HPMidValue;
+        public int HPMinValue;
         public string playercolor;
         public string rangecolor;
         public string guncolor;
